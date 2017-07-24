@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>hey!</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Blog site of Christopher T-P covering Python basics, Django basics, UX/IxD and anything else that comes to mind.">
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
+    </head>    
+    <body>
+
+        <section class="hero is-success is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h2 class="subtitle">                        
+                        {{ propagandistSlogans.slogan }} it's
+                    </h2>
+                    <h1 class="title">
+                        Christopher's blog
+                    </h1>
+                </div>
+            </div>
+        </section>
+
+        {% block content %}
+
+        {% endblock %}
+
+    </body>
+
+</html> 
+
+
+
