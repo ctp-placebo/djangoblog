@@ -1,6 +1,10 @@
 """cupar URL Configuration
 
-The `urlpatterns` list routes URLs to views. For more information please see:
+*******************
+The `urlpatterns` list routes URLs to views.
+*******************
+
+ For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
 Examples:
 Function views
@@ -23,5 +27,17 @@ top level directory.
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('blog.urls')),
+    url(r'', include('blog.urls')),
 ]
+
+"""
+Django will now redirect everything that comes into 'http://127.0.0.1:8000/' to blog.urls and look for further instructions there, because of this 2nd entry in urlpatterns.
+
+"""
+""" REGEX REMINDER
+    ^ for the beginning of the text
+    $ for the end of the text
+    \d for a digit
+    + to indicate that the previous item should be repeated at least once
+    () to capture part of the pattern
+"""
