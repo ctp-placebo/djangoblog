@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <title>hey!</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Blog site of Christopher T-P covering Python basics, Django basics, UX/IxD and anything else that comes to mind.">
-	{% load staticfiles %}
-	<link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
+        <meta name="description" content="Blog site.">
+
+        <!-- Let's get the static files where we use them, but this could be before the html tag -->
+	    {% load staticfiles %}
+	    <link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
     </head>    
     <body>
 
         <section class="hero is-success is-bold">
             <div class="hero-body">
                 <div class="container">
-                    <h2 class="subtitle">                        
-                        {{ propagandistSlogans.slogan }} it's
-                    </h2>
+                    {% block slogan %}
+                        {% for propaganda in propagandas %}
+                            <h6>{{ propaganda.slogan }} it's</h6>
+                        {% endfor %}
+                    {% endblock %}
                     <h1 class="title">
-                        Christopher's blog
+                        Christopher's weblog
                     </h1>
                 </div>
             </div>
         </section>
-
+        <!-- content under header in here-> -->
         {% block content %}
-
         {% endblock %}
-
     </body>
-
 </html> 
-
 
 

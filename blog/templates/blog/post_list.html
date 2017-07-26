@@ -1,9 +1,15 @@
 {% extends "blog/header.html" %}
 
 {% block content %}
-    <p>i am a text please do not harm me</p>
 
-    <h2 class="subtitle">                        
-        {{ propagandistSlogans.slogan }} it's
-    </h2>
+    {% for post in posts %}
+        <section class="section">
+            <div class="container">
+                <h1 class="title"><a href="#">{{ post.title }}</a></h1>
+                <p>{{ post.summary|linebreaksbr }}</p>
+                <p>published: {{ post.last_edited }}</p>
+            </div>
+        </section>
+    {% endfor %}
+
 {% endblock %}
