@@ -5,7 +5,7 @@
     {% for post in posts %}
         <section class="section">
             <div class="container">
-                <h1 class="title"><a href="#">{{ post.title }}</a></h1>
+                <h1 class="title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.summary|linebreaksbr }}</p>
                 <p>published: {{ post.last_edited }}</p>
             </div>
