@@ -4,7 +4,7 @@
     <section class="section">
         <div class="container"> 
             
-            {% if next_page %}<a href="{{ next_page.post }}">Next</a></p>{% else %}<span class="disabled">There are no more articles!</span>{% endif %}
+            {% if next_page %}<a href="{{ next_page.get_absolute_url }}">Next</a></p>{% else %}<span class="disabled">There are no more articles!</span>{% endif %}
             {% if prev_page %}<a href="{{ prev_page.get_absolute_url }}">Previous</a></p>{% else %}<span class="disabled">&#nbsp;</span>{% endif %}
 
             <h1 class="title is-1">{{ post.title }}</h1>

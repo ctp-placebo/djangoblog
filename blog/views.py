@@ -24,13 +24,11 @@ def post_detail(request, pk):
         'prev_page': prev_page,
         })
 
-# need to add a function/method for propagandas that can be used by all views, else will have to repeat 2nd and partial 3rd lines of post_list function to get the slogans on all pages.
-#def jam(propagandas):
-#    propagandas = Propaganda.objects.all().order_by('?')[:1]
-#    return propagandas
-
-
-""" cannot have 2 methods for same page/view, so this doeas not work!
+""" need to add a function/method for propagandas that can be used by all views, else will have to repeat 2nd and partial 3rd lines of post_list #function to get the slogans on all pages.
+def jam(propagandas):
+    propagandas = Propaganda.objects.all().order_by('?')[:1]
+    return propagandas
+#cannot have 2 methods for same page/view, so this doeas not work, use classes
 def header(request):
     propagandas = Propaganda.objects.all().order_by('?')[:1]
     return render(request, 'blog/post_list.html', {'propagandas':propagandas})

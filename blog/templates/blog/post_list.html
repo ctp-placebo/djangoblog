@@ -5,7 +5,10 @@
     {% for post in posts %}
         <section class="section">
             <div class="container">
-                <h1 class="title"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                <span class="icon is-large">
+                    <i class="fa fa-book"></i>
+                </span>
+                <h1 class="title is-1" style="display:inline-block;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
                 <p>{{ post.summary|linebreaksbr }}</p>
                 <p>published: {{ post.last_edited }}</p>
             </div>

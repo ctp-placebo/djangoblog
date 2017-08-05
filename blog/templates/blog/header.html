@@ -8,7 +8,8 @@
 
         <!-- Let's get the static files where we use them, but this could be before the html tag -->
 	    {% load staticfiles %}
-	    <link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>    
     <body>
 
@@ -21,6 +22,9 @@
                         {% endfor %}
                     {% endblock %}
                     <h1 class="title">
+                        <span class="icon">
+                            <i class="fa fa-home"></i>
+                            </span>
                         <a href="{% url 'post_list' %}">Christopher's weblog</a>
                     </h1>
                 </div>
