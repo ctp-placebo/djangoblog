@@ -1,6 +1,8 @@
 from django.template import RequestContext
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Propaganda
+from .forms import PostForm
+from django.utils import timezone
 
 # Create your views here.
 def post_list(request):
@@ -33,3 +35,19 @@ def header(request):
     propagandas = Propaganda.objects.all().order_by('?')[:1]
     return render(request, 'blog/post_list.html', {'propagandas':propagandas})
 """
+
+def post_new(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.created_date = timezone.now()
+            post.last_edited = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {
+        'form': form,
+        })
