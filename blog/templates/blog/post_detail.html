@@ -4,8 +4,16 @@
     <section class="section">
         <div class="container"> 
             
-            {% if next_page %}<a href="{{ next_page.get_absolute_url }}">Next</a></p>{% else %}<span class="disabled">There are no more articles!</span>{% endif %}
-            {% if prev_page %}<a href="{{ prev_page.get_absolute_url }}">Previous</a></p>{% else %}<span class="disabled">&#nbsp;</span>{% endif %}
+            <div class="field">
+                <div class="control">
+                    <a class="button is-warning is-pulled-right" href="{% url 'post_edit' pk=post.pk %}">
+                    <span class="icon">
+                        <i class="fa fa-edit"></i>
+                    </span>
+                    <span>Edit</span>
+                    </a>
+                </div>
+            </div>
 
             <h1 class="title is-1">{{ post.title }}</h1>
             <div class="columns is-centered">
