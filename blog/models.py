@@ -12,10 +12,10 @@ class Propaganda(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=140, blank=False, null=False)
     content = models.TextField()
-    summary = models.CharField(max_length=500)
+    summary = models.TextField(max_length=500)
+    tips = models.TextField(max_length=280, blank=False, null=False)
     created_date = models.DateTimeField()
     last_edited = models.DateTimeField()
 
     def __str__(self):
         return self.title
-    

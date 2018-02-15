@@ -10,6 +10,7 @@
 	    {% load staticfiles %}
         <link rel="stylesheet" href="{% static 'blog/css/bulma.css' %}" type="text/css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link rel="stylesheet" href="{% static 'blog/css/cupar.css' %}" type="text/css" /> -->
     </head>    
     <body>
 
@@ -21,24 +22,31 @@
                             <h6>{{ propaganda.slogan }} it's</h6>
                         {% endfor %}
                     {% endblock %}
-                    <h1 class="title">
+                    <h1 class="title" style="display: inline-block;">
                         <span class="icon">
                             <i class="fa fa-home"></i>
                             </span>
-                        <a href="{% url 'post_list' %}">Christopher's weblog</a>
+                        <a href="{% url 'post_list' %}">The Ultimate Definitive Guide to UX and Interaction Design</a>
                     </h1>
-                        <a href="{% url 'post_new' %}" class="is-right">
-                            <span class="icon">
-                                <i class="fa-plus-circle-o is-right"></i>
-                            </span>
-                        </a>
-                </div>
+
+                    {% if user.is_authenticated %}
+                    <div class="field">
+                        <div class="control">                            
+                            <a href="{% url 'post_new' %}" class="button is-warning is-pulled-right">
+                                <span class="icon">
+                                    <i class="fa fa-plus-square"></i>
+                                </span>
+                                <span>New post</span>
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                </div><!-- @container -->
             </div>
         </section>
         <!-- content under header in here-> -->
         {% block content %}
         {% endblock %}
     </body>
-</html> 
-
-
+</html>

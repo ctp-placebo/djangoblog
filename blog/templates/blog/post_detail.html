@@ -1,9 +1,11 @@
 {% extends 'blog/header.html' %}
 
 {% block content  %}
+{% load staticfiles %}
     <section class="section">
         <div class="container"> 
             
+            {% if user.is_authenticated %}
             <div class="field">
                 <div class="control">
                     <a class="button is-warning is-pulled-right" href="{% url 'post_edit' pk=post.pk %}">
@@ -14,30 +16,34 @@
                     </a>
                 </div>
             </div>
+            {% endif %}
 
-            <h1 class="title is-1">{{ post.title }}</h1>
-            <div class="columns is-centered">
-                <div class="column is-three-quarters">
-                    {{ post.content|safe }}
+            <div class="content ">
+                <h1 class="title is-1">{{ post.title }}</h1>
+                <div class="columns">
+                    <div class="column is-two-thirds"> 
+                        {{ post.content|safe }}
+                    </div>
+                    <article class="message is-danger">
+                        <div class="message-header">
+                            <p>Did You Know...</p>
+                        </div>
+                        <div class="message-body">
+                            {{ post.tips|safe }}
+                        </div>
+                    </article>
                 </div>
             </div>
 
-            <div class="columns">
-                <div class="column is-1">
-                    <p class="content is-small">Created:</p>                    
-                </div>
-                <div class="column is-2">
-                    <p class="content is-small">{{ post.created_date }}</p>
-                </div>
-            </div>
             <div class="columns">
                 <div class="column is-1">
                     <p class="content is-small">Last edited:</p>                    
                 </div>
                 <div class="column is-2">
-                    <p class="content is-small">{% if post.last_edited %}
-                                                    {{ post.last_edited }}
-                                                {% endif %}
+                    <p class="content is-small">
+                        {% if post.last_edited %}
+                            {{ post.last_edited }}
+                        {% endif %}
                     </p>
                 </div>
             </div>

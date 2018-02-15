@@ -12,6 +12,7 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    propagandas = Propaganda.objects.all().order_by('?')[:1]
     try:
         next_page = post.get_next_by_created_date()
     except Post.DoesNotExist:
@@ -22,6 +23,7 @@ def post_detail(request, pk):
         prev_page = None
     return render(request, 'blog/post_detail.html', {
         'post': post,
+        'propagandas': propagandas,
         'next_page': next_page,
         'prev_page': prev_page,
         })
